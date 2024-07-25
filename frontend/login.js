@@ -1,10 +1,10 @@
-const server = "http://13.201.186.221:3000";
+const server = "http://13.201.186.221";
 
 document.getElementById("loginForm")?.addEventListener("submit", (e) => {
   e.preventDefault();
   const mail = document.getElementById("loginMail").value;
   const password = document.getElementById("loginPassword").value;
-  
+
   axios
     .post(`${server}/user/login`, {
       mail: mail,

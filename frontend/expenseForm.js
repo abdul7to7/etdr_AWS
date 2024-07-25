@@ -1,4 +1,4 @@
-const server = "http://13.201.186.221:3000";
+const server = "http://13.201.186.221";
 
 //Dom Loading expenses
 let currentPage = 1;

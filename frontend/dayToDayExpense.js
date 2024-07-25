@@ -1,4 +1,4 @@
-const server = "http://13.201.186.221:3000";
+const server = "http://13.201.186.221";
 
 document.addEventListener("DOMContentLoaded", async (e) => {
   document.getElementById("currentYear").textContent = new Date().getFullYear();
