@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expenses</title>
+  </head>
+  <link rel="stylesheet" href="./expenseForm.css" />
+  <body>
+    <div class="mainContainer">
+      <div class="formContainer">
+        <h2 class="blockHeading">Add Expense</h2>
+        <form id="expenseForm">
+          <div class="expenseFormItem flexSpaceBetween">
+            <input
+              type="number"
+              name="expenseAmount"
+              id="expenseAmount"
+              placeholder="Amount"
+              required
+            />
+          </div>
+          <div class="expenseFormItem flexSpaceBetween">
+            <input
+              type="text"
+              name="expenseDesc"
+              id="expenseDesc"
+              placeholder="Description"
+              required
+            />
+          </div>
+          <div class="expenseFormItem flexSpaceBetween">
+            <select
+              name="expenseCat"
+              id="expenseCat"
+              placeholder="Category"
+              class="transparent-select"
+              required
+            >
+              <option value="" disabled selected hidden>Category</option>
+              <option value="Food">Food</option>
+              <option value="Travel">Travel</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Repairs">Repairs</option>
+              <option value="EMIs">EMIs</option>
+            </select>
+          </div>
+          <button type="submit" id="expenseSubmitButton" class="btn">
+            Add Expense
+          </button>
+        </form>
+        <h4
+          class="recentlyAddedHeading"
+          id="recentlyAddedHeading"
+          style="display: none"
+        >
+          Recently added
+        </h4>
+        <ul id="recent-expense-list" class="expense-list-main"></ul>
+      </div>
+      <div class="expenseContainer">
+        <h2 class="blockHeading">Expenses</h2>
+        <ul id="expense-list" class="expense-list-main"></ul>
+        <div class="btns" id="btns">
+          <button class="btn prev" id="prevPage">Prev</button>
+          <button class="btn" id="currentPage">1</button>
+          <button class="btn next" id="nextPage">Next</button>
+          <div id="rowSize" class="rowSize">
+            <p class="rowSizeTitle">Rows per page</p>
+            <select class="rowSizeSelect" id="rowSizeSelect">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="25">25</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="premiumContainer">
+        <h2 class="blockHeading">Premium Features</h2>
+        <div id="premium">
+          <p id="premiumStatus">You are a premium user</p>
+
+          <button id="dayToDayExpenseBtn" class="btn">
+            View Expense Report
+          </button>
+          <button id="downloadReport" class="btn">Download Report</button>
+          <button id="show-leaderboard-btn" class="btn">
+            Show LeaderBoard
+          </button>
+          <ul id="leaderboard-list"></ul>
+        </div>
+        <button id="buy-premium-btn" class="btn">Buy Premium</button>
+      </div>
+    </div>
+    <script src="./expenseForm.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  </body>
+</html>

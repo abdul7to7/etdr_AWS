@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="./signup.css" />
+  <body>
+    <div class="mainContainer">
+      <div class="formContainer">
+        <form class="signUpForm" id="signUpForm">
+          <div class="flexSpaceBetween signupFormItem">
+            <input
+              type="text"
+              name="username"
+              id="signUpUsername"
+              placeholder="Username"
+              required
+            />
+          </div>
+          <div class="flexSpaceBetween signupFormItem">
+            <input
+              type="mail"
+              name="mail"
+              id="signUpMail"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div class="flexSpaceBetween signupFormItem">
+            <input
+              type="password"
+              name="password"
+              id="signUpPassword"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="flexCenter">
+            <button class="btn" type="submit" id="signupButton">
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+      <div>
+        <p>Already have an account. <a href="./index.html">Login</a></p>
+      </div>
+    </div>
+  </body>
+  <script src="./signup.js"></script>
+</html>
