@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
   let data = await getExpensesByPage();
   let total = 0;
   let monthlyExpense = new Array(12).fill(0);
+  let yearlyExpense = {};
   let currentDate = new Date();
   data.expenses.forEach((expense) => {
     addExpenseToUI(expense);
@@ -15,14 +16,21 @@ document.addEventListener("DOMContentLoaded", async (e) => {
     if (createdDate.getFullYear() == currentDate.getFullYear()) {
       monthlyExpense[createdDate.getMonth()] += expense.amount;
     }
+    if (yearlyExpense[createdDate.getFullYear()]) {
+      yearlyExpense[createdDate.getFullYear()] += expense.amount;
+    } else {
+      yearlyExpense[createdDate.getFullYear()] = expense.amount;
+    }
   });
-  addTomonthlyTableUI(monthlyExpense);
   const newRow = table.insertRow(-1);
   const newCell = newRow.insertCell(0);
   newCell.textContent = `Total Expenses = ${total}`;
   newCell.colSpan = table.rows[0].cells.length;
   newCell.classList.add("numbers");
   newRow.style.backgroundColor = "lightblue";
+
+  addTomonthlyTableUI(monthlyExpense);
+  addToYearlyTableUI(yearlyExpense);
 });
 
 async function getExpensesByPage() {
@@ -107,4 +115,29 @@ function addTomonthlyTableUI(monthlyExpense) {
       table.appendChild(tr);
     }
   });
+}
+
+function addToYearlyTableUI(yearlyExpense) {
+  let table = document.getElementById("yearlyExpenseTable");
+  for (let year in yearlyExpense) {
+    let tr = document.createElement("tr");
+    let td1 = document.createElement("td");
+    let td2 = document.createElement("td");
+    let td3 = document.createElement("td");
+    let td4 = document.createElement("td");
+    td1.textContent = year;
+    td2.textContent = 12 * 60000;
+    td3.textContent = yearlyExpense[year];
+    td4.textContent = 12 * 60000 - yearlyExpense[year];
+
+    td2.classList.add("numbers");
+    td3.classList.add("numbers");
+    td4.classList.add("numbers");
+
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tr.appendChild(td4);
+    table.appendChild(tr);
+  }
 }
