@@ -58,7 +58,8 @@ tr:nth-child(even) {
     background-color: lightgray;
 }
 
-.monthlyTable {
+.monthlyTable,
+.yearlyTable {
     width: 100%;
 }
 
