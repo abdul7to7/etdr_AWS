@@ -1,9 +1,9 @@
 const server = "http://13.201.186.221";
 
-//Dom Loading expenses
 let currentPage = 1;
 let lastPage = false;
 
+//Dom Loading expenses
 document.addEventListener("DOMContentLoaded", async () => {
   let pageSize = localStorage.getItem("pageSize");
   if (pageSize === null || pageSize === undefined || pageSize === "") {
@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   premiumUser(data.user.isPremium);
 });
 
+//Click on Next and Prev Buttons
 document.getElementById("btns").addEventListener("click", async (e) => {
   let data;
 
@@ -67,6 +68,7 @@ document.getElementById("btns").addEventListener("click", async (e) => {
   currentPageEl.textContent = currentPage;
 });
 
+//Change row Size
 document.getElementById("rowSizeSelect").addEventListener("change", (e) => {
   e.preventDefault();
   localStorage.setItem("pageSize", e.target.value);
@@ -241,11 +243,7 @@ function addExpenseToUI(expense, recent) {
 function removeFromUI(targetElement) {
   let parent = targetElement.parentNode.parentNode;
   parent.removeChild(targetElement.parentNode);
-  if (parent.childNodes.length == 0) {
-    if (currentPage == 1) {
-      window.location.reload();
-      return;
-    }
+  if (parent.childNodes.length == 0 && currentPage != 1) {
     document.getElementById("prevPage").click();
   }
 }
