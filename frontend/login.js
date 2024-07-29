@@ -21,6 +21,9 @@ document.getElementById("loginForm")?.addEventListener("submit", (e) => {
       }
       localStorage.setItem("token", response.data.token);
       window.location.href = "./expenseForm.html";
+    })
+    .catch((e) => {
+      alert(e);
     });
 });
 
@@ -41,5 +44,7 @@ document
       body: JSON.stringify({
         mail: mail,
       }),
+    }).catch((e) => {
+      alert(e);
     });
   });

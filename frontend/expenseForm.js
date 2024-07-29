@@ -6,7 +6,7 @@ let lastPage = false;
 
 document.addEventListener("DOMContentLoaded", async () => {
   let pageSize = localStorage.getItem("pageSize");
-  if (pageSize === null) {
+  if (pageSize === null || pageSize === undefined || pageSize === "") {
     pageSize = 5;
     localStorage.setItem("pageSize", pageSize);
   }
@@ -132,6 +132,9 @@ document
             alert(data.message);
             localStorage.setItem("token", data.token);
             premiumUser(data.user.isPremium);
+          })
+          .catch((e) => {
+            alert(e);
           });
       },
     };
@@ -264,7 +267,7 @@ async function postExpense(expense) {
     response = await response.json();
     return response;
   } catch (e) {
-    console.log(e);
+    alert(e);
   }
 }
 
@@ -278,7 +281,7 @@ async function getAllExpenses() {
     response = await response.json();
     return response;
   } catch (e) {
-    console.log(e);
+    alert(e);
   }
 }
 
@@ -295,7 +298,7 @@ async function getExpensesForPage(page, pageSize) {
     response = await response.json();
     return response;
   } catch (e) {
-    console.log(e);
+    alert(e);
   }
 }
 
@@ -309,7 +312,7 @@ async function deleteExpense(id) {
     response = await response.json();
     return response;
   } catch (e) {
-    console.log(e);
+    alert(e);
   }
 }
 
@@ -327,11 +330,15 @@ function premiumUser(isPremium) {
 }
 
 async function getLeaderboard() {
-  let data = await fetch(`${server}/expense_features/leaderboard`, {
-    headers: {
-      token: localStorage.getItem("token"),
-    },
-  });
-  data = await data.json();
-  return data;
+  try {
+    let data = await fetch(`${server}/expense_features/leaderboard`, {
+      headers: {
+        token: localStorage.getItem("token"),
+      },
+    });
+    data = await data.json();
+    return data;
+  } catch (e) {
+    alert(e);
+  }
 }

@@ -34,13 +34,17 @@ document.addEventListener("DOMContentLoaded", async (e) => {
 });
 
 async function getExpensesByPage() {
-  let data = await fetch(`${server}/expense/get_expenses?page=1&size=10`, {
-    headers: {
-      token: localStorage.getItem("token"),
-    },
-  });
-  data = await data.json();
-  return data;
+  try {
+    let data = await fetch(`${server}/expense/get_expenses?page=1&size=10`, {
+      headers: {
+        token: localStorage.getItem("token"),
+      },
+    });
+    data = await data.json();
+    return data;
+  } catch (e) {
+    alert(e);
+  }
 }
 
 function addExpenseToUI(expense) {
