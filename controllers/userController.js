@@ -85,7 +85,6 @@ exports.login = async (req, res, next) => {
 };
 
 exports.forgotPassword = async (req, res, next) => {
-  
   const uuid = uuidv4();
   const sendSmtpEmail = {
     to: [
@@ -104,7 +103,7 @@ exports.forgotPassword = async (req, res, next) => {
       <html>
       <body>
         <p>You requested a password reset. Click the link below to reset your password:</p>
-        <a href="http://localhost:4000/user/resetpassword/${uuid}">Reset Password</a>
+        <a href="13.201.186.221/user/resetpassword/${uuid}">Reset Password</a>
       </body>
       </html>`,
   };
