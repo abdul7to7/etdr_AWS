@@ -44,7 +44,11 @@ document
       body: JSON.stringify({
         mail: mail,
       }),
-    }).catch((e) => {
-      alert(e);
-    });
+    })
+      .then(() => {
+        alert("Password reset link sent to email");
+      })
+      .catch((e) => {
+        alert(e);
+      });
   });
